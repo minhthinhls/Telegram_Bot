@@ -87,6 +87,20 @@ module.exports = (app) => {
     /** System routers !*/
     router.get('/api/system/info', userRequired, controller.system.index);
 
+    const bot = require('./telegram/bot');
+    /** Telegram Bot Routers !*/
+    router.post(`/telegram/bot/${bot.secretPathComponent()}`, async (ctx, next) => {
+        Object.assign(bot.context, {
+            app: ctx.app,
+            model: ctx.model,
+            mongoose: ctx.app.mongoose,
+            helper: ctx.helper,
+        });
+        await bot.handleUpdate(ctx.request.body);
+        /** Here Context jump into first middleware of app.use(middlewareFn) ~!*/
+        return next();
+    });
+
     /* ====================== SOCKET EVENTS ====================== */
     /* Socket routes */
     app.io.route('chat', app.io.controller.chat.chat);

@@ -43,7 +43,7 @@ module.exports = {
     package: "egg-security",
   },
   sequelize: {
-    enable: true,
+    enable: false,
     package: "egg-sequelize",
   },
   userrole: {
