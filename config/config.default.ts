@@ -52,7 +52,7 @@ export default (appInfo: EggAppInfo): RecursivePartial<IEggAppConfig> => ({
 
   cluster: {
     listen: {
-      port: 7003,
+      port: 8443,
     },
   },
 

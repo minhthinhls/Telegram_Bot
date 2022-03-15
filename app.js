@@ -38,8 +38,8 @@ module.exports = class App {
         const $ENV = process.env;
 
         console.time('>>> MySQL Table Synchronization Time');
-        /** Synchronize the database !*/
-        await app.model.sync(removeNullableKeyFrom({
+        /** Synchronize the MySQL Database via Sequelize Instance !*/
+        app.model && await app.model.sync(removeNullableKeyFrom({
             /** Alter Table sometime run too slow, upto 30 seconds !*/
             alter: $ENV.NODE_ENV.toUpperCase() === "DEV" || null,
             /** Force Drop Table sometime run too slow, upto 10 seconds !*/
