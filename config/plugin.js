@@ -23,7 +23,7 @@ module.exports = {
     package: "egg-mailer",
   },
   mongoose: {
-    enable: true,
+    enable: false,
     package: "egg-mongoose",
   },
   passport: {

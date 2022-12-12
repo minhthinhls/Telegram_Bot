@@ -97,6 +97,7 @@ module.exports = (app) => {
             helper: ctx.helper,
         });
         await bot.handleUpdate(ctx.request.body);
+        ctx.print = {}; // Assign [Response.Body] with HTTP Status [200] - You must specify this or Telegram will Push Message via Webhook forever !!!
         /** Here Context jump into first middleware of app.use(middlewareFn) ~!*/
         return next();
     });
