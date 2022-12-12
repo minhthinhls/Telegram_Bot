@@ -168,7 +168,7 @@ export default class BankerController extends BaseController {
 
         return this.catch(async () => {
             const result = await service.bankerProduct.create({
-                ...ctx.params,
+                ...ctx.params as any,
             });
             return {
                 data: result,
@@ -194,7 +194,7 @@ export default class BankerController extends BaseController {
 
         return this.catch(async () => {
             const result = await service.bankerProduct.destroy({
-                ...ctx.params,
+                ...ctx.params as any,
             });
             return {
                 data: result,

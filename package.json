@@ -45,6 +45,7 @@
     "autod": "autod",
     "ci": "npm run lint && npm run cov",
     "cov": "egg-bin cov",
+    "tsc": "tsc --noEmit",
     "lint": "eslint --quiet --no-error-on-unmatched-pattern ."
   },
   "ci": {
@@ -55,7 +56,7 @@
     "npm": ">=6.14.4"
   },
   "resolutions": {
-    "ajv": "^6.12.3",
+    "ajv": "^5.5.2",
     "ansi-regex": "^5.0.1",
     "engine.io": "^4.0.0",
     "follow-redirects": "1.14.8",
@@ -66,6 +67,7 @@
     "markdown-it": "^12.3.2",
     "mem": "^4.0.0",
     "minimist": "^1.2.3",
+    "mongodb": "^4.12.1",
     "mongoose": "^6.2.5",
     "mpath": "^0.8.4",
     "nanoid": "^3.1.31",

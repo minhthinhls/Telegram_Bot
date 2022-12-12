@@ -32,7 +32,7 @@ export default class BankAccountController extends BaseController {
 
         return this.catch(async () => {
             const result = await service.user.bankAccount.create({
-                ...ctx.params,
+                ...ctx.params as any,
             });
             return this.response({
                 data: result,

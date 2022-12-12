@@ -28,7 +28,7 @@ export default class VirtualWalletController extends BaseController {
 
         return this.catch(async () => {
             const result = await service.user.virtualWallet.create({
-                ...ctx.params,
+                ...ctx.params as any,
             });
             return this.response({
                 data: result,

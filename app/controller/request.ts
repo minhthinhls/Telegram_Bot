@@ -164,7 +164,7 @@ export default class RequestController extends BaseController {
 
         return this.catch(async () => {
             return service.request.create({
-                ...ctx.params,
+                ...ctx.params as any,
             });
         }, {
             /* [[Optional Attributes Placeholder]] */
