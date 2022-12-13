@@ -72,6 +72,14 @@ export declare interface IMailer<T = any> extends Transporter<T> {
     send(mailOptions: SendMailOptions): Promise<T>;
 }
 
+/*
+declare module "egg" {
+    interface Application {
+        redis: Singleton<Redis> & Redis;
+    }
+}
+*/
+
 export declare interface IApplication extends Application {
     Sequelize: typeof sequelize;
     controller: IController;

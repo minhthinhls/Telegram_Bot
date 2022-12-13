@@ -19,6 +19,10 @@ import type {IApplication} from "@/extend/types";
 
 module.exports = (app: IApplication) => {
     app.beforeStart(() => {
+        /** @description - Since plugin got disabled. Trying to merge Mongoose Models into ${app.mongoose == undefined} will expose [Errors] !*/
+        if (!app.plugins.mongoose?.enable) {
+            return void 0;
+        }
         /** @document For dependency && library reference !*/
         ///<reference types="egg-core/lib/loader/egg_loader.js"/>
         require("../../node_modules/egg-core/lib/loader/egg_loader.js");
