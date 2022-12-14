@@ -38,12 +38,19 @@
     "paths": {                                           /* Specify a set of entries that re-map imports to additional lookup locations. */
       "$/*": ["./*"],
       "@/*": ["./app/*"],
-      "@/utils/*": ["./app/utils/*"],
+      "@utils/*": ["./app/utils/*"],
+      "@handlers/*": ["./app/handlers/*"],
+      "@services/*": ["./app/services/*"],
+      "@types": [                                        /** @see {@link https://github.com/microsoft/TypeScript/issues/22217/}. */
+        "./@types",                                      /** Equals to ${`./@types/index.d.ts`}. */
+        "./app/@types",                                  /** Equals to ${`./app/@types/index.d.ts`}. */
+      ],
     },
     "rootDirs": ["."],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     "typeRoots": [                                       /* Specify multiple folders that act like `./node_modules/@types`. */
-      "./typings",                                       /** @see {@link https://www.typescriptlang.org/tsconfig#typeRoots} */
-      "./node_modules/@types",
+      "./@types",                                        /** @see {@link https://www.typescriptlang.org/tsconfig#typeRoots}. */
+      "./typings",                                       /** @see {@link https://www.typescriptlang.org/tsconfig#typeRoots}. */
+      "./node_modules/@types",                           /** @see {@link https://www.typescriptlang.org/tsconfig#typeRoots}. */
     ],
     "types": [                                           /* Specify type package names to be included without being referenced in a source file. */
       "node", "mocha",
