@@ -11,6 +11,9 @@
  **!*****************************!*/
 require("module-alias/register");
 
+/** Import Environment Dependencies !*/
+import "$/dotenv.config.js";
+
 /** Import ES6 Default Core Dependencies !*/
 import * as path from "path";
 /** Import ES6 Default Core Dependencies !*/
@@ -18,14 +21,14 @@ import * as ngrok from "ngrok";
 /** Import ES6 Default Core Dependencies !*/
 import {Telegraf, Context} from "@/extend/telegraf";
 
-const __TelegramBot__ = new Telegraf<Context>("**********:***********************************", {
+const __TelegramBot__ = new Telegraf<Context>(process.env.BOT_TOKEN || "**********:***********************************", {
     contextType: Context,
 });
 
 /** @see {@link https://www.youtube.com/watch?v=NXevT_0GtNU}
  ** @see {@link https://www.npmjs.com/package/ngrok} ~!*/
 ngrok.connect({
-    authtoken: '************************************************',
+    authtoken: process.env.NGROK_TOKEN || '************************************************',
     region: 'ap',
     proto: 'http',
     addr: 8443,
@@ -37,9 +40,9 @@ ngrok.connect({
 const DEFAULT_TELEGRAM_USER_ID = 1660520397; // Username of ${`EdgarHuynh`}
 
 __TelegramBot__.on('message', (ctx) => {
-    if (ctx.from?.id !== DEFAULT_TELEGRAM_USER_ID) {
-        return void 0;
-    }
+    // if (ctx.from?.id !== DEFAULT_TELEGRAM_USER_ID) {
+    //     return void 0;
+    // }
     console.log('> [Message]:', ctx.message);
     console.log('> [BotInfo]:', ctx.botInfo);
     return ctx.reply('> Hello!');

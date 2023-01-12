@@ -1,7 +1,7 @@
 /** Import Egg-Modules as Typed Namespace !*/
-import "egg";
+import type {} from "egg";
 /** Import Application Placeholder from Egg:Modules !*/
-import "egg-socket.io/app";
+import type {} from "egg-socket.io"; // Will throw error.
 
 /** Import Pre-Defined Types Helper !*/
 import type {IBody} from "@/extend/context";
@@ -17,7 +17,15 @@ declare module "egg" {
     export interface CustomMiddleware {
         auth: typeof middlewareFn;
     }
+    /* eslint-disable-next-line @typescript-eslint/naming-convention */
+    export interface IController {
+        proxy: string;
+    }
 }
+
+/// <reference path="../../../typings/app/controller/index.d.ts" />
+// import type {Application, IController} from "egg";
+// import type {} from "../../../typings/app/controller";
 
 /**
  ** @param {IApplication} app - Egg application

@@ -912,7 +912,7 @@ export namespace Cron {
      **/
     const AsyncTask = function (this: typeof AsyncTask, callback: ArrowFunc, timeout = NaN) {
         if (this.finished) {
-            return true;
+            return this;
         }
         /**
          ** @template T
@@ -940,7 +940,7 @@ export namespace Cron {
     /**
      ** - Polling callback will try executing the callback multiple times.
      ** - Until the value resolved or rejected by reaching maximum try amount.
-     ** @param {function(): any} callback
+     ** @param {function(resolver: function(*=): void): any} callback
      ** @param {number} timeout
      ** @returns {Promise<AsyncTask>}
      **/
@@ -952,6 +952,7 @@ export namespace Cron {
         const maxSafeTry = 100;
         return new AsyncTask(function (this: typeof AsyncTask) {
             if (++$scope.i > maxSafeTry) {
+                this.finished = true;
                 return reject(new Error(`Reach limited max safe try: ${maxSafeTry}`));
             }
             return callback.call(this, (resolver) => {
